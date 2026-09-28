@@ -1,97 +1,114 @@
 # Albany Airbnb Market Insights AI
 
-An interactive analytics dashboard for exploring Airbnb listing prices, availability, property types, and review patterns in Albany, New York. Built with Python and Streamlit, the project combines data analysis and visualization with a Gemini-powered AI assistant to help users explore the market through natural-language questions.
+An interactive data analytics dashboard for exploring Airbnb listing prices, availability, property types, and review patterns in Albany, New York. Built with Python and Streamlit, this project combines exploratory data analysis, interactive visualizations, and a Gemini-powered AI assistant for natural-language data exploration.
 
 **Live Dashboard:** [Open Albany Airbnb Market Insights AI](https://albany-airbnb-market-insights-axgjfspaavq7ahyw5kemf6.streamlit.app/)
+
+**EDA Notebook:** [View the Exploratory Data Analysis](airbnb_market_insights.ipynb)
 
 ---
 
 ## Project Overview
 
-This project analyzes publicly available Airbnb listing data for Albany, New York. It presents key market indicators in an interactive dashboard, allowing users to filter listings and investigate pricing and other listing characteristics.
+This project explores publicly available Airbnb listing data for Albany, New York. The dashboard presents key market indicators and interactive charts to help users investigate nightly prices, availability, property types, neighbourhood patterns, and review information.
 
-A built-in AI assistant uses the current dashboard view to answer questions about the filtered data, making the analysis easier to explore without writing queries or code.
+The application also includes a Gemini-powered AI assistant that answers natural-language questions using the current dashboard view and its active filters.
 
-## Objectives
+## Project Objectives
 
-* Explore nightly pricing patterns across Airbnb room types.
-* Compare listing prices by neighbourhood and property type.
-* Examine availability, review scores, and estimated occupancy.
-* Present key findings through interactive charts and metrics.
-* Enable natural-language exploration of the current filtered dataset using Gemini.
+* Analyze nightly pricing patterns across Airbnb room types.
+* Compare listing prices across neighbourhoods and property types.
+* Explore listing availability, review scores, and estimated occupancy.
+* Present key findings through an interactive analytics dashboard.
+* Integrate an AI assistant to make the dataset easier to explore with natural-language questions.
+* Demonstrate practical skills in data cleaning, exploratory analysis, visualization, and deployment.
 
 ## Dashboard Features
 
 * **Interactive filters:** Filter listings by room type and nightly price range.
-* **Key metrics:** View summary indicators such as listing counts and nightly price statistics.
-* **Price analysis:** Explore nightly price distributions and compare median prices across room types.
-* **Neighbourhood insights:** Compare listing prices across neighbourhoods.
-* **Availability and reviews:** Examine availability, review scores, and relationships between listing characteristics.
-* **Property type analysis:** Explore the mix of property types in the dataset.
-* **Listing map:** View geographic patterns for the listings.
-* **AI-powered Q&A:** Ask questions in natural language and receive responses based on the active dashboard view.
+* **Key performance indicators:** View summary metrics for the currently selected listings.
+* **Nightly price analysis:** Explore price distributions and compare median prices by room type.
+* **Neighbourhood analysis:** Compare listing prices across neighbourhoods.
+* **Availability analysis:** Examine listing availability over different time periods.
+* **Review analysis:** Explore review counts and review score patterns.
+* **Property type analysis:** Review the distribution of property types in the dataset.
+* **Geographic visualization:** Explore the locations of listings on a map.
+* **AI-powered Q&A:** Ask questions about the data in natural language and receive answers based on the current dashboard view.
+
+## Exploratory Data Analysis (EDA)
+
+The EDA notebook documents the data preparation and exploratory analysis performed before building the dashboard. It includes data cleaning, inspection of important variables, descriptive statistics, and visual exploration of the Albany Airbnb listings.
+
+**[Open the EDA Notebook on GitHub](airbnb_market_insights.ipynb)**
 
 ## Dataset
 
-The project uses publicly available listing data from **Inside Airbnb** for Albany, New York.
+The project uses publicly available Airbnb listing data for Albany, New York, from [Inside Airbnb](https://insideairbnb.com/).
 
-The dashboard is powered by a prepared dataset containing **490 listings and 17 selected fields**. The original data was cleaned and transformed for analysis. Some records have missing nightly prices, so price-based summaries use listings with available price data.
+The prepared dashboard dataset contains **490 listings and 17 selected fields**. The original data was cleaned and transformed for use in the dashboard. Some listings have missing nightly prices, so price-based summaries use only records with a known price.
 
-### Selected fields
+### Selected Dataset Fields
 
-| Field                                                    | Description                                |
-| -------------------------------------------------------- | ------------------------------------------ |
-| `neighbourhood_cleansed`                                 | Neighbourhood associated with the listing  |
-| `latitude`, `longitude`                                  | Listing coordinates                        |
-| `property_type`                                          | Type of property                           |
-| `room_type`                                              | Airbnb room category                       |
-| `accommodates`                                           | Maximum guest capacity                     |
-| `bedrooms`, `beds`                                       | Bedroom and bed counts                     |
-| `nightly_price`                                          | Listed nightly price                       |
-| `availability_30`, `availability_90`, `availability_365` | Availability over the specified periods    |
-| `number_of_reviews`                                      | Total number of reviews                    |
-| `review_scores_rating`                                   | Listing review score                       |
-| `estimated_occupancy_l365d`                              | Estimated occupancy over the last 365 days |
-| `estimated_revenue_l365d`                                | Estimated revenue over the last 365 days   |
+| Field                       | Description                                   |
+| --------------------------- | --------------------------------------------- |
+| `id`                        | Listing identifier                            |
+| `neighbourhood_cleansed`    | Neighbourhood associated with the listing     |
+| `latitude`, `longitude`     | Geographic coordinates of the listing         |
+| `property_type`             | Property category                             |
+| `room_type`                 | Airbnb room category                          |
+| `accommodates`              | Maximum guest capacity                        |
+| `bedrooms`                  | Number of bedrooms                            |
+| `beds`                      | Number of beds                                |
+| `nightly_price`             | Listed nightly price                          |
+| `availability_30`           | Number of available days in the next 30 days  |
+| `availability_90`           | Number of available days in the next 90 days  |
+| `availability_365`          | Number of available days in the next 365 days |
+| `number_of_reviews`         | Total number of reviews                       |
+| `review_scores_rating`      | Listing review score                          |
+| `estimated_occupancy_l365d` | Estimated occupancy over the last 365 days    |
+| `estimated_revenue_l365d`   | Estimated revenue over the last 365 days      |
 
-**Data source:** [Inside Airbnb](https://insideairbnb.com/)
+**Source:** [Inside Airbnb](https://insideairbnb.com/)
 
 ## Key Findings
 
-The following figures are based on the prepared dataset used in the dashboard:
+The following statistics are based on the prepared dataset used in the dashboard:
 
 * **490** total listings in the prepared dataset.
-* **458** listings have a known nightly price.
+* **458** listings with a known nightly price.
 * **$145.67** overall median nightly price among listings with available prices.
 * **$71.82** median nightly price for private rooms.
 * **$166.00** median nightly price for entire homes/apartments.
 
-These are descriptive statistics from the dataset, not predictions of future prices or guarantees of actual booking revenue. Results may change when filters are applied.
+These figures are descriptive summaries of the dataset. They are not predictions of future prices or guarantees of booking revenue. Results shown in the dashboard may differ when filters are applied.
 
 ## Tools and Technologies
 
-* **Python** — data preparation and analysis
-* **Pandas** — data cleaning and transformation
-* **Plotly** — interactive visualizations
-* **Streamlit** — dashboard and web app
-* **Google Gemini API** — natural-language AI assistant
-* **Jupyter Notebook** — exploratory analysis and development
-* **GitHub** — source control and project hosting
-* **Streamlit Community Cloud** — deployment
+| Tool / Technology         | Purpose                             |
+| ------------------------- | ----------------------------------- |
+| Python                    | Data preparation and analysis       |
+| Pandas                    | Data cleaning and transformation    |
+| Plotly                    | Interactive data visualizations     |
+| Streamlit                 | Dashboard development and web app   |
+| Google Gemini API         | AI-powered natural-language Q&A     |
+| Jupyter Notebook          | Exploratory data analysis           |
+| GitHub                    | Version control and project hosting |
+| Streamlit Community Cloud | Application deployment              |
 
-## Project Structure
+## Repository Structure
 
 ```text
 albany-airbnb-market-insights/
 │
 ├── app.py
 ├── albany_airbnb_dashboard.csv
+├── airbnb_market_insights.ipynb
 ├── requirements.txt
 ├── README.md
 └── .gitignore
 ```
 
-## Run Locally
+## Run the Project Locally
 
 ### 1. Clone the repository
 
@@ -100,68 +117,69 @@ git clone https://github.com/vsadarshahi97/albany-airbnb-market-insights.git
 cd albany-airbnb-market-insights
 ```
 
-### 2. Install dependencies
-
-It is recommended to use a virtual environment.
+### 2. Create and activate a virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
-Activate the environment on Windows:
+On Windows, activate it with:
 
 ```bash
 .venv\Scripts\activate
 ```
 
-Install the required packages:
+### 3. Install the required packages
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Configure the Gemini API key
+### 4. Configure the Gemini API key
 
-Create a folder named `.streamlit` in the project directory, then create a file named `secrets.toml` inside it.
+The AI assistant requires a Gemini API key. Create a folder named `.streamlit` in the project directory and create a file named `secrets.toml` inside it.
 
-Add your API key in this format:
+Add your key in this format:
 
 ```toml
 GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"
 ```
 
-Replace the placeholder with your own key. **Never commit this file or share your API key publicly.**
+Replace the placeholder with your own API key.
 
-### 4. Start the dashboard
+**Security note:** Keep your API key private. Do not commit `secrets.toml` to GitHub or share the key publicly. The repository's `.gitignore` excludes the local secrets file.
+
+### 5. Run the Streamlit app
 
 ```bash
 streamlit run app.py
 ```
 
-Streamlit will provide a local address in the terminal. Open that address in your browser to use the dashboard.
+Open the local URL shown in the terminal to use the dashboard.
 
 ## AI Assistant
 
-The dashboard includes a Gemini-powered assistant for asking questions about the data. Responses are intended to reflect the current filtered view of the dashboard.
+The dashboard integrates the Google Gemini API to support natural-language questions about the listing data. The assistant is designed to use the current dashboard view, including active filters, when preparing its responses.
 
-The assistant is a convenience for exploring the dataset. Verify important figures against the dashboard or source data, and do not treat AI-generated explanations as a substitute for checking the underlying calculations.
+AI-generated answers can occasionally be incomplete or inaccurate. Check important figures against the dashboard and underlying dataset before relying on them.
 
 ## Limitations
 
-* The analysis covers the available Albany listing dataset and may not represent every Airbnb listing in the market.
-* Some listings have missing nightly prices, which affects the number of records included in price calculations.
-* Occupancy and revenue fields are estimates from the source dataset and should not be interpreted as verified financial results.
-* Listing prices and availability can change over time; this dashboard is not a live booking or pricing feed.
-* AI responses can occasionally be incomplete or inaccurate, so key findings should be checked against the data.
+* The analysis is limited to the available Albany listing dataset and may not include every Airbnb listing in the area.
+* Some records have missing nightly prices, reducing the number of listings included in price-based calculations.
+* Occupancy and revenue fields are estimates from the source dataset and should not be treated as verified financial results.
+* Listing prices and availability can change over time. This dashboard is not a live booking or pricing feed.
+* AI-generated responses may contain errors and should be verified against the data.
+* The findings describe the dataset and should not be interpreted as causal conclusions about the wider short-term rental market.
 
 ## Future Improvements
 
-* Add date-based comparisons to examine how listing prices and availability change over time.
-* Expand the analysis with additional cities and compare markets.
-* Add more detailed filters for guest capacity, bedrooms, and property type.
-* Improve the AI assistant with more guided analytical questions and clearer explanations of its data scope.
-* Add automated data refreshes when updated source data becomes available.
-* Introduce additional market indicators and downloadable filtered reports.
+* Add date-based comparisons to explore changes in listing prices and availability over time.
+* Extend the analysis to additional cities to enable market comparisons.
+* Add more filters for guest capacity, bedroom count, and property type.
+* Expand the AI assistant with guided analytical questions and clearer explanations of its data scope.
+* Support automated data refreshes when updated source data becomes available.
+* Add downloadable reports and additional market indicators.
 
 ## Author
 
@@ -171,4 +189,4 @@ GitHub: [vsadarshahi97](https://github.com/vsadarshahi97)
 
 ---
 
-*This project was developed as a data analytics portfolio project to demonstrate data preparation, exploratory analysis, interactive visualization, and the integration of an AI assistant into a web dashboard.*
+*This project was developed as a data analytics portfolio project demonstrating data preparation, exploratory analysis, interactive visualization, AI integration, and web application deployment.*
